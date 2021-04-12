@@ -1,0 +1,113 @@
+<div class="container-fluid p-4">
+  <div class="row"><h4>Управление расписанием</h4></div>
+  <div class="row pb-4">
+    <button class="btn btn-primary" (click)="handleAddClick()">Добавить</button>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <th scope="col">Имя</th>
+        <th scope="col">Срок</th>
+        <th scope="col">Действие</th>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEditPanelVisible">
+          <div class="container-fluid p-4">
+            <div class="row"><h4>Параметры записи распиания</h4></div>
+
+            <div class="row">
+              <mat-form-field>
+                <mat-label>Дата урока</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  [(ngModel)]="editSchedule.lessonDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div сlass="row">
+              <mat-form-field>
+                <mat-label>Задача</mat-label>
+                <mat-select
+                  [(ngModel)]="editSchedule.subject"
+                  [compareWith]="compareEntities"
+                >
+                  <mat-option
+                    *ngFor="let subject of subjects | async"
+                    [value]="subject"
+                    >{{ subject.title }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div сlass="row">
+              <mat-form-field>
+                <mat-label>Преподаватель</mat-label>
+                <mat-select
+                  [(ngModel)]="editSchedule.teacher"
+                  [compareWith]="compareEntities"
+                >
+                  <mat-option
+                    *ngFor="let teacher of users | async"
+                    [value]="teacher"
+                    >{{ teacher.lastName }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div сlass="row">
+              <mat-form-field>
+                <mat-label>Посещаемость</mat-label>
+                <mat-select
+                  [(ngModel)]="editSchedule.attendance"
+                  [compareWith]="compareEntities"
+                  multiple
+                >
+                  <mat-option
+                    *ngFor="let user of users | async"
+                    [value]="user"
+                    >{{ user.lastName }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col-xs-4"></div>
+              <div class="col-xs-4">
+                <button class="btn btn-primary" (click)="handleSaveClick()">
+                  Сохранить
+                </button>
+                <button class="btn" (click)="handleCancelClick()">
+                  Отмена
+                </button>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr *ngFor="let scheduleEntry of schedule | async">
+          <td>{{ scheduleEntry.id }}</td>
+          <td>{{ scheduleEntry.lessonDate }}</td>
+          <td>{{ scheduleEntry.subject.title }}</td>
+          <td>
+            {{ scheduleEntry.teacher.firstName }}
+            {{ scheduleEntry.teacher.lastName }}
+          </td>
+
+          <td>
+            <button
+              class="btn btn-primary"
+              (click)="handleEditClick(scheduleEntry)"
+            >
+              Редактировать
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

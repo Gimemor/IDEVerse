@@ -1,0 +1,115 @@
+<div class="container-fluid p-4">
+  <div class="row"><h4>Пользователи</h4></div>
+  <div class="row pb-4">
+    <button class="btn btn-primary" (click)="handleAddClick()">Добавить</button>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <th>
+          ФИО
+        </th>
+        <th>
+          Телефон
+        </th>
+        <th>
+          Почта
+        </th>
+        <th>
+          Роль
+        </th>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEditPanelVisible">
+          <div class="container-fluid p-4">
+            <div class="row"><h4>Редактирование пользователя</h4></div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>
+                  Имя
+                </mat-label>
+                <input matInput type="text" [(ngModel)]="editUser.firstName" />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>
+                  Фамилия
+                </mat-label>
+                <input matInput type="text" [(ngModel)]="editUser.lastName" />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-checkbox [(ngModel)]="editUser.isConfirmed"
+                >Аккаунт Подтвержден</mat-checkbox
+              >
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>
+                  Телефон
+                </mat-label>
+                <input matInput type="text" [(ngModel)]="editUser.phone" />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>
+                  Почта
+                </mat-label>
+                <input matInput type="text" [(ngModel)]="editUser.email" />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>Роль</mat-label>
+                <mat-select [(ngModel)]="editUser.roleId">
+                  <mat-option
+                    *ngFor="let role of roles | async"
+                    [value]="role.id"
+                    >{{ role.title }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>Предметы</mat-label>
+                <mat-select
+                  [(ngModel)]="editUser.subjects"
+                  [compareWith]="compareSubjects"
+                  multiple
+                >
+                  <mat-option
+                    *ngFor="let subject of subjects | async"
+                    [value]="subject"
+                    >{{ subject.title }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <button class="btn btn-primary" (click)="handleSaveClick()">
+                Сохранить
+              </button>
+              <button class="btn" (click)="handleCancelClick()">
+                Отменить
+              </button>
+            </div>
+          </div>
+        </tr>
+        <tr *ngFor="let user of users | async">
+          <td>{{ user.firstName + " " + user.lastName }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role.title }}</td>
+          <td>
+            <button class="btn" (click)="handleEditClick(user)">
+              Редактировать
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

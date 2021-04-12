@@ -1,0 +1,7 @@
+.card-subject {
+    width: 400px;
+}
+
+::ng-deep .mat-card-content {
+    padding: 0 15px;
+}

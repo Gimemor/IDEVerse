@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <mat-drawer-container>
+    <mat-drawer mode="side" opened>
+      <ul class="p-4">
+        <li><a [routerLink]="'/control-panel'">Управление ролями</a></li>
+        <li>
+          <a [routerLink]="'/control-panel/rights'">Управление правами</a>
+        </li>
+        <li>
+          <a [routerLink]="'/control-panel/users'">Управление пользователями</a>
+        </li>
+        <li>
+          <a [routerLink]="'/control-panel/subjects'">Управление предметами</a>
+        </li>
+        <li>
+          <a [routerLink]="'/control-panel/tasks'">Управление задачами</a>
+        </li>
+        <li>
+          <a [routerLink]="'/control-panel/schedule'">Управление расписанием</a>
+        </li>
+      </ul>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

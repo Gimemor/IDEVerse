@@ -1,0 +1,32 @@
+<div class="container-fluid p-8" style="margin: 8px;">
+  <div class="row">
+    <h1>Добрый день, {{ userName }}</h1>
+  </div>
+  <div class="row">
+    <p>Ваши следующие занятия:</p>
+  </div>
+  <div class="row">
+
+  </div>
+</div>
+<gridster [options]="options">
+      <gridster-item [item]="task" *ngFor="let task of dashboard">
+        <!-- your content here -->
+        <mat-card  class="card-task">
+          <mat-card-header>
+            <mat-card-title>{{task.title}}</mat-card-title>
+            <mat-card-subtitle>Срок сдачи: {{ task.deadline}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{task.description}}
+              Статус: не сдано
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>ОБНОВИТЬ</button>
+            <button mat-button>СДАТЬ</button>
+          </mat-card-actions>
+        </mat-card>
+      </gridster-item>
+    </gridster>

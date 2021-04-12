@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="RBCAcademyDB" id="Project_243a1b6" database="PostgreSQL" >
+	<schema name="rbcacademydb" >
+		<table name="attendance" >
+			<comment><![CDATA[Посещаемость, сюда заноим записи, когда бот говорит что пользователь пристутствовал.
+Если в расписании есть запись, а здесь нет - пользователь не может завершить курс]]></comment>
+			<column name="schedule_id" type="uuid" jt="1111" mandatory="y" />
+			<column name="user_id" type="uuid" jt="1111" mandatory="y" />
+			<index name="pk_attendance_schedule_id" unique="PRIMARY_KEY" >
+				<column name="schedule_id" />
+				<column name="user_id" />
+			</index>
+			<fk name="fk_attendance_to_schedule" to_schema="rbcacademydb" to_table="schedule" >
+				<fk_column name="schedule_id" pk="id" />
+			</fk>
+			<fk name="fk_attendance_to_user" to_schema="rbcacademydb" to_table="users" >
+				<fk_column name="user_id" pk="id" />
+			</fk>
+		</table>
+		<table name="file_to_tasks" >
+			<column name="file_id" type="uuid" jt="1111" mandatory="y" />
+			<column name="task_id" type="uuid" jt="1111" mandatory="y" />
+			<index name="pk_file_to_tassks_file_id" unique="PRIMARY_KEY" >
+				<column name="file_id" />
+			</index>
+			<fk name="fk_file_to_tassks_to_files" to_schema="rbcacademydb" to_table="files" >
+				<fk_column name="file_id" pk="id" />
+			</fk>
+			<fk name="fk_file_to_tassks_to_tasks" to_schema="rbcacademydb" to_table="tasks" >
+				<fk_column name="task_id" pk="id" />
+			</fk>
+		</table>
+		<table name="files" >
+			<column name="id" type="uuid" jt="1111" mandatory="y" />
+			<column name="title" type="varchar" jt="12" />
+			<column name="url_token_smth_else" type="varchar[]" jt="2003" />
+			<index name="pk_files_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="grades" >
+			<comment><![CDATA[Оценки по задачам]]></comment>
+			<column name="id" type="uuid" jt="1111" mandatory="y" />
+			<column name="user_id" type="uuid" length="100" jt="1111" mandatory="y" />
+			<column name="task_id" type="uuid" jt="1111" />
+			<column name="grade" type="varchar" jt="12" mandatory="y" />
+			<column name="is_completed" type="bit" jt="-7" />
+			<index name="pk_grades_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_grades_to_tasks" to_schema="rbcacademydb" to_table="tasks" >
+				<fk_column name="task_id" pk="id" />
+			</fk>
+			<fk name="fk_grades_to_users" to_schema="rbcacademydb" to_table="users" >
+				<fk_column name="user_id" pk="id" />
+			</fk>
+		</table>
+		<table name="roles" spec="" >
+			<comment><![CDATA[Роли определяют права на доступ]]></comment>
+			<column name="id" type="uuid" jt="1111" />
+			<column name="title" type="varchar" jt="12" />
+			<column name="mnemo" type="varchar" jt="12" />
+			<index name="unq_roles_id" unique="UNIQUE" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="schedule" >
+			<comment><![CDATA[Расписание, запланированные даты обучения либо можно просто заполниять статически]]></comment>
+			<column name="id" type="uuid" jt="1111" />
+			<column name="learning_date" type="date" jt="91" mandatory="y" />
+			<column name="subject_id" type="uuid" jt="1111" mandatory="y" />
+			<column name="teacher_id" type="uuid" jt="1111" >
+				<comment><![CDATA[Преподаватель]]></comment>
+			</column>
+			<index name="pk_schedule_subject_id" unique="PRIMARY_KEY" >
+				<column name="subject_id" />
+			</index>
+			<index name="unq_schedule_id" unique="UNIQUE" >
+				<column name="id" />
+			</index>
+			<fk name="fk_schedule_to_subject" to_schema="rbcacademydb" to_table="subjects" >
+				<fk_column name="subject_id" pk="id" />
+			</fk>
+			<fk name="fk_schedule_to_user" to_schema="rbcacademydb" to_table="users" >
+				<fk_column name="teacher_id" pk="role_id" />
+			</fk>
+		</table>
+		<table name="subject_assignments" >
+			<column name="subject_id" type="uuid" jt="1111" mandatory="y" />
+			<column name="user_id" type="uuid" jt="1111" mandatory="y" />
+			<column name="is_completed" type="bit" jt="-7" />
+			<index name="pk_subject_results_subject_id" unique="PRIMARY_KEY" >
+				<column name="subject_id" />
+			</index>
+			<fk name="fk_subject_results_to_subject" to_schema="rbcacademydb" to_table="subjects" >
+				<fk_column name="subject_id" pk="id" />
+			</fk>
+			<fk name="fk_subject_assignments_to_user" to_schema="rbcacademydb" to_table="users" >
+				<fk_column name="user_id" pk="id" />
+			</fk>
+		</table>
+		<table name="subjects" >
+			<comment><![CDATA[Предмет, объединяет несколько заданий и/или учебных материалов]]></comment>
+			<column name="id" type="uuid" jt="1111" mandatory="y" />
+			<column name=" title" type="uuid" jt="1111" />
+			<column name="deadline" type="date" jt="91" >
+				<comment><![CDATA[Вычисляемое поле или что-то вроде того =  MAX(deadline of related tasks)]]></comment>
+			</column>
+			<index name="pk_subjects_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="tasks" >
+			<comment><![CDATA[Задачи.
+Курс считается завершенным, если выполнены все задачи по курсу]]></comment>
+			<column name="id" type="uuid" jt="1111" mandatory="y" />
+			<column name="title" type="varchar" jt="12" />
+			<column name="description" type="varchar" jt="12" />
+			<column name="subject_id" type="uuid" jt="1111" mandatory="y" />
+			<column name="deadline" type="date" jt="91" />
+			<index name="pk_tasks_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<fk name="fk_tasks_to_subjects" to_schema="rbcacademydb" to_table="subjects" >
+				<fk_column name="subject_id" pk="id" />
+			</fk>
+		</table>
+		<table name="tasks_to_subject" >
+			<column name="task_id" type="uuid" jt="1111" mandatory="y" />
+			<column name="subject_id" type="uuid" jt="1111" mandatory="y" />
+			<index name="pk_tasks_to_subject_task_id" unique="PRIMARY_KEY" >
+				<column name="task_id" />
+				<column name="subject_id" />
+			</index>
+			<fk name="fk_tasks_to_subject_to_tasks" to_schema="rbcacademydb" to_table="tasks" >
+				<fk_column name="task_id" pk="id" />
+			</fk>
+			<fk name="fk_tasks_to_subject_to_subject" to_schema="rbcacademydb" to_table="subjects" >
+				<fk_column name="subject_id" pk="id" />
+			</fk>
+		</table>
+		<table name="users" >
+			<column name="id" type="uuid" jt="1111" />
+			<column name="phone" type="varchar" jt="12" />
+			<column name="email" type="varchar" jt="12" />
+			<column name="first_name" type="varchar" length="100" jt="12" />
+			<column name="last_name" type="varchar" length="100" jt="12" />
+			<column name="role_id" type="uuid" jt="1111" />
+			<index name="unq_users_id" unique="UNIQUE" >
+				<column name="id" />
+			</index>
+			<index name="unq_users_role_id" unique="UNIQUE" >
+				<column name="role_id" />
+			</index>
+			<fk name="fk_user_to_role" to_schema="rbcacademydb" to_table="roles" >
+				<fk_column name="role_id" pk="id" />
+			</fk>
+		</table>
+	</schema>
+	<layout name="Default Layout" id="Layout_378a041" show_relation="columns" >
+		<entity schema="rbcacademydb" name="attendance" color="C1D8EE" x="896" y="272" />
+		<entity schema="rbcacademydb" name="file_to_tasks" color="C1D8EE" x="720" y="592" />
+		<entity schema="rbcacademydb" name="files" color="C1D8EE" x="464" y="672" />
+		<entity schema="rbcacademydb" name="grades" color="C1D8EE" x="208" y="480" />
+		<entity schema="rbcacademydb" name="roles" color="C1D8EE" x="80" y="48" />
+		<entity schema="rbcacademydb" name="schedule" color="C1D8EE" x="848" y="432" />
+		<entity schema="rbcacademydb" name="subject_assignments" color="C1D8EE" x="384" y="112" />
+		<entity schema="rbcacademydb" name="subjects" color="C1D8EE" x="656" y="96" />
+		<entity schema="rbcacademydb" name="tasks" color="C1D8EE" x="432" y="368" />
+		<entity schema="rbcacademydb" name="users" color="C1D8EE" x="48" y="208" />
+		<callout x="1088" y="96" pointer="SV" >
+			<comment><![CDATA[Только один курс
+
+
+Курс состоит из нескольких предметов, пока что они доступны сразу
+Предметы содержат в себе учебные материалы и/или задания
+]]></comment>
+		</callout>
+	</layout>
+</project>

@@ -1,0 +1,84 @@
+<div class="container-fluid p-4">
+  <div class="row"><h4>Задачи</h4></div>
+  <div class="row pb-4">
+    <button class="btn btn-primary" (click)="handleAddClick()">Добавить</button>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <th scope="col">Имя</th>
+        <th scope="col">Срок</th>
+        <th scope="col">Действие</th>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEditPanelVisible">
+          <div class="container-fluid p-4">
+            <div class="row"><h4>Параметры предмета</h4></div>
+            <div class="row">
+              <mat-form-field apperance="fill">
+                <mat-label>Название</mat-label>
+                <input
+                  type="text"
+                  class="text"
+                  [(ngModel)]="editTask.title"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>Срок</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  [(ngModel)]="editTask.deadline"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div сlass="row">
+              <mat-form-field>
+                <mat-label>Задача</mat-label>
+                <mat-select
+                  [(ngModel)]="editTask.subject"
+                  [compareWith]="compareSubjects"
+                >
+                  <mat-option
+                    *ngFor="let subject of subjects | async"
+                    [value]="subject"
+                    >{{ subject.title }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col-xs-4"></div>
+              <div class="col-xs-4">
+                <button class="btn btn-primary" (click)="handleSaveClick()">
+                  Сохранить
+                </button>
+                <button class="btn" (click)="handleCancelClick()">
+                  Отмена
+                </button>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr *ngFor="let task of tasks | async">
+          <td>{{ task.id }}</td>
+          <td>{{ task.title }}</td>
+          <td>{{ task.deadline }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="handleEditClick(task)">
+              Редактировать
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

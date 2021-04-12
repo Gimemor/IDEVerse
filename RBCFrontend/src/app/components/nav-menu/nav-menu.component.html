@@ -1,0 +1,76 @@
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow"
+  >
+    <div class="d-flex flex-row full-width">
+      <a class="navbar-brand" [routerLink]="['/']">RBCAcademy</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+        [ngClass]="{ show: isExpanded }"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link text-dark" [routerLink]="['/']">Главная</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/dashboard']"
+              >Статистика</a
+            >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/schedule']"
+              >Расписание</a
+            >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/tasks']"
+              >Домашние задания</a
+            >
+          </li>
+          <li
+            *appHasRight="rights.controlPanelAccess"
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+          >
+            <a class="nav-link text-dark" [routerLink]="['/teacher-panel']">
+              Учительская
+            </a>
+          </li>
+          <li
+            *appHasRight="rights.controlPanelAccess"
+            class="nav-item"
+            [routerLinkActive]="['link-active']"
+          >
+            <a class="nav-link text-dark" [routerLink]="['/control-panel']"
+              >Панель управления</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="ml-auto pt-1 ml-3">
+        <button mat-button [matMenuTriggerFor]="loginMenu">
+          <mat-icon>perm_identity </mat-icon>
+          {{ userName }}
+        </button>
+        <mat-menu #loginMenu="matMenu">
+          <button mat-menu-item (click)="onLogout()">Выйти</button>
+        </mat-menu>
+      </div>
+    </div>
+  </nav>
+</header>

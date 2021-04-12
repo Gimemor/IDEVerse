@@ -1,0 +1,78 @@
+<div class="container-fluid p-4">
+  <div class="row"><h4>Права</h4></div>
+  <div class="row pb-4">
+    <button class="btn btn-primary" (click)="handleAddClick()">Добавить</button>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <th scope="col">Имя</th>
+        <th scope="col">Мнемоника</th>
+        <th scope="col">Описание</th>
+        <th scope="col">Действие</th>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEditPanelVisible">
+          <div class="container-fluid p-4">
+            <div class="row"><h4>Параметры права</h4></div>
+            <div class="row">
+              <mat-form-field apperance="fill">
+                <mat-label>Название</mat-label>
+                <input
+                  type="text"
+                  class="text"
+                  [(ngModel)]="editingRight.title"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>Описание</mat-label>
+                <input
+                  type="text"
+                  class="text"
+                  [(ngModel)]="editingRight.description"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>Мнемоника</mat-label>
+                <input
+                  type="text"
+                  class="text"
+                  [(ngModel)]="editingRight.mnemo"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col-xs-4"></div>
+              <div class="col-xs-4">
+                <button class="btn btn-primary" (click)="handleSaveClick()">
+                  Сохранить
+                </button>
+                <button class="btn" (click)="handleCancelClick()">
+                  Отмена
+                </button>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr *ngFor="let right of rights | async">
+          <td>{{ right.id }}</td>
+          <td>{{ right.title }}</td>
+          <td>{{ right.description }}</td>
+          <td>{{ right.mnemo }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="handleEditClick(right.id)">
+              Редактировать
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

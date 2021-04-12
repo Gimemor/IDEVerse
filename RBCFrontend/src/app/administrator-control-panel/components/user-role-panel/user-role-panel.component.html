@@ -1,0 +1,81 @@
+<div class="container-fluid p-4">
+  <div class="row"><h4>Роли</h4></div>
+  <div class="row pb-4">
+    <button class="btn btn-primary" (click)="handleAddClick()">Добавить</button>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <th scope="col">Имя</th>
+        <th scope="col">Мнемоника</th>
+        <th scope="col">Действие</th>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEditPanelVisible">
+          <div class="container-fluid p-4">
+            <div class="row"><h4>Параметры роли</h4></div>
+            <div class="row">
+              <mat-form-field apperance="fill">
+                <mat-label>Название</mat-label>
+                <input
+                  type="text"
+                  class="text"
+                  [(ngModel)]="editingRole.title"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>Мнемоника</mat-label>
+                <input
+                  type="text"
+                  class="text"
+                  [(ngModel)]="editingRole.mnemo"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>Права</mat-label>
+                <mat-select
+                  multiple
+                  [(ngModel)]="editingRole.rights"
+                  [compareWith]="compareEntities"
+                >
+                  <mat-option
+                    *ngFor="let right of rights | async"
+                    [value]="right"
+                    >{{ right.title }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col-xs-4"></div>
+              <div class="col-xs-4">
+                <button class="btn btn-primary" (click)="handleSaveClick()">
+                  Сохранить
+                </button>
+                <button class="btn" (click)="handleCancelClick()">
+                  Отмена
+                </button>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr *ngFor="let role of roles | async">
+          <td>{{ role.id }}</td>
+          <td>{{ role.title }}</td>
+          <td>{{ role.mnemo }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="handleEditClick(role.id)">
+              Редактировать
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="container-fluid p-4">
+  <div class="row"><h4>Предметы</h4></div>
+  <div class="row pb-4">
+    <button class="btn btn-primary" (click)="handleAddClick()">Добавить</button>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <th scope="col">Имя</th>
+        <th scope="col">Срок</th>
+        <th scope="col">Действие</th>
+      </thead>
+      <tbody>
+        <tr *ngIf="isEditPanelVisible">
+          <div class="container-fluid p-4">
+            <div class="row"><h4>Параметры предмета</h4></div>
+            <div class="row">
+              <mat-form-field apperance="fill">
+                <mat-label>Название</mat-label>
+                <input
+                  type="text"
+                  class="text"
+                  [(ngModel)]="editSubject.title"
+                  matInput
+                />
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <mat-form-field>
+                <mat-label>Срок</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  [(ngModel)]="editSubject.deadline"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="row">
+              <div class="col-xs-4"></div>
+              <div class="col-xs-4">
+                <button class="btn btn-primary" (click)="handleSaveClick()">
+                  Сохранить
+                </button>
+                <button class="btn" (click)="handleCancelClick()">
+                  Отмена
+                </button>
+              </div>
+            </div>
+          </div>
+        </tr>
+        <tr *ngFor="let subject of subjects | async">
+          <td>{{ subject.id }}</td>
+          <td>{{ subject.title }}</td>
+          <td>{{ subject.deadline }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="handleEditClick(subject)">
+              Редактировать
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
