@@ -8,6 +8,6 @@ export class UserRight extends Entity {
 
 
 export enum RightsMnemos {
-  controlPanelAccess = 'right.rbcacademy/control-panel-access',
-  scheduleAccess = 'right.rbcacademy/schedule-access',
+  controlPanelAccess = 'right.IDEVerse/control-panel-access',
+  scheduleAccess = 'right.IDEVerse/schedule-access',
 }
