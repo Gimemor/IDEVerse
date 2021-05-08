@@ -14,9 +14,8 @@ import {VerseEditorComponent} from "../components/verse-editor/verse-editor.comp
 const routes = [
   {
     path: "",
-    component: HomeComponent,
-    match: "full",
-    canActivate: [AuthGuard],
+    pathMatch: "full",
+    redirectTo: "verse-editor",
   },
   {
     path: "dashboard",
