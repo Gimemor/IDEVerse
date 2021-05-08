@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using RBCAcademyDb;
+using IDEVerseDb;
 
-namespace RBCAcademy.Migrations
+namespace IDEVerse.Migrations
 {
     [DbContext(typeof(MainContext))]
     [Migration("20200501153911_PostgreInitial")]

@@ -1,9 +1,9 @@
 ﻿using IdeVerseContracts.Dto;
-using RBCAcademyDb;
+using IDEVerseDb;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RBCAcademyCore.Binders
+namespace IDEVerseCore.Binders
 {
 	public class UserBinder
 	{

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 
-namespace RBCAcademyDb
+namespace IDEVerseDb
 {
 	public class UserRole
 	{

@@ -1,13 +1,13 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
-using RBCAcademyDb;
+using IDEVerseDb;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IdeVerseContracts.Dto;
 using IdeVerseContracts.Services;
 
-namespace RBCAcademy.Controllers
+namespace IDEVerse.Controllers
 {
 	[Route("api/Tasks")]
 	public class TaskApiController : BaseApiContoller

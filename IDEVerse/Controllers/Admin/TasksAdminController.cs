@@ -7,9 +7,9 @@ using IdeVerseContracts.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RBCAcademyDb;
+using IDEVerseDb;
 
-namespace RBCAcademy.Controllers.Admin
+namespace IDEVerse.Controllers.Admin
 {
     [Route("api/admin/tasks")]
     [ApiController]

@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RBCAcademyContracts.Services;
-using RBCAcademyCore.Services;
-using RBCAcademyDb;
+using IDEVerseContracts.Services;
+using IDEVerseCore.Services;
+using IDEVerseDb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RbcAcademyTests.ServiceTests
+namespace IDEVerseTests.ServiceTests
 {
 	/// <summary>
 	/// Сервис должен правильно выполнить действия

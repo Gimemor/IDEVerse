@@ -2,15 +2,15 @@
 using IdeVerseContracts.Dto;
 using IdeVerseContracts.Exceptions;
 using IdeVerseContracts.Services;
-using RBCAcademyCore.Binders;
-using RBCAcademyDb;
+using IDEVerseCore.Binders;
+using IDEVerseDb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RBCAcademyCore.Services
+namespace IDEVerseCore.Services
 {
 	public class SubjectService : ISubjectService
 	{

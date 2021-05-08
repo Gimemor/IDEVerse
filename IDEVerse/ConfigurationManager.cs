@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using IdeVerseContracts;
 
-namespace RBCAcademy
+namespace IDEVerse
 {
 	public class ConfigurationManager : IConfigurationManager
 	{

@@ -2,13 +2,13 @@
 using IdeVerseContracts.Dto;
 using IdeVerseContracts.Services;
 using IdeVerseContracts.UserManager;
-using RBCAcademyDb;
+using IDEVerseDb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RBCAcademyCore
+namespace IDEVerseCore
 {
 	public class UserManager
 	{

@@ -17,10 +17,10 @@ using System.Security.Claims;
 using System.Text;
 using IdeVerseContracts;
 using IdeVerseContracts.UserManager;
-using RBCAcademyCore;
-using RBCAcademyDb;
+using IDEVerseCore;
+using IDEVerseDb;
 
-namespace RBCAcademy
+namespace IDEVerse
 {
 	public class Startup
 	{
@@ -71,7 +71,7 @@ namespace RBCAcademy
 			// In production, the Angular files will be served from this directory
 			services.AddSpaStaticFiles(configuration =>
 			{
-				configuration.RootPath = "..//RBCFrontend//dist";
+				configuration.RootPath = "..//IDEVerseFrontend//dist";
 			});
 			services.AddDbContext<MainContext>(options => options.UseNpgsql(ConfigurationManager.DefaultDbConnection, x => x.MigrationsAssembly("IDEVerse")));
 		}
@@ -145,7 +145,7 @@ namespace RBCAcademy
 				// To learn more about options for serving an Angular SPA from ASP.NET Core,
 				// see https://go.microsoft.com/fwlink/?linkid=864501
 
-				spa.Options.SourcePath = "..\\RBCFrontend";
+				spa.Options.SourcePath = "..\\IDEVerseFrontend";
 				
 				if (env.IsDevelopment())
 				{

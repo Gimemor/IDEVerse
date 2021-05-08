@@ -1,11 +1,11 @@
 ﻿using IdeVerseContracts.Dto;
-using RBCAcademyDb;
+using IDEVerseDb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RBCAcademyCore.Binders
+namespace IDEVerseCore.Binders
 {
 	public class ScheduleEntryBinder
 	{

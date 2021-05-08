@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using IdeVerseContracts.Exceptions;
 
-namespace RBCAcademy.Controllers
+namespace IDEVerse.Controllers
 {
 	public abstract class BaseApiContoller : ControllerBase
 	{

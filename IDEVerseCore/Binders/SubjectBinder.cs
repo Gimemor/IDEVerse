@@ -1,8 +1,8 @@
 ﻿
 using IdeVerseContracts.Dto;
-using RBCAcademyDb;
+using IDEVerseDb;
 
-namespace RBCAcademyCore.Binders
+namespace IDEVerseCore.Binders
 {
 	public class SubjectBinder
 	{

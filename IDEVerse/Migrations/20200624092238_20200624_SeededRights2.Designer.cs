@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using RBCAcademyDb;
+using IDEVerseDb;
 
-namespace RBCAcademy.Migrations
+namespace IDEVerse.Migrations
 {
     [DbContext(typeof(MainContext))]
     [Migration("20200624092238_20200624_SeededRights2")]
@@ -230,14 +230,14 @@ namespace RBCAcademy.Migrations
                         {
                             Id = new Guid("72f59bc4-47f8-4e7a-8fb5-7e1380cbe072"),
                             Description = "Доступ к панели управления",
-                            Mnemo = "right.rbcacademy/control-panel-access",
+                            Mnemo = "right.IDEVerse/control-panel-access",
                             Title = "Доступ к панели управления"
                         },
                         new
                         {
                             Id = new Guid("eae48cab-2b37-4200-aef6-5870f6ec21c1"),
                             Description = "Доступ к расписанию",
-                            Mnemo = "right.rbcacademy/schedule-access",
+                            Mnemo = "right.IDEVerse/schedule-access",
                             Title = "Доступ к расписанию"
                         });
                 });

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>fafc0d73-e4bc-4f1c-9934-12bc38b517fe</UserSecretsId>
-    <RootNamespace>RBCAcademyDb</RootNamespace>
+    <RootNamespace>IDEVerseDb</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,10 +1,10 @@
 ﻿using Autofac;
 using IdeVerseContracts.Services;
 using IdeVerseContracts.UserManager;
-using RBCAcademyCore.Services;
-using RBCAcademyDb;
+using IDEVerseCore.Services;
+using IDEVerseDb;
 
-namespace RBCAcademyCore
+namespace IDEVerseCore
 {
 	public class CoreModuleLibrary : Module
 	{

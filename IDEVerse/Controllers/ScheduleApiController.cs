@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using IdeVerseContracts.Dto;
 using IdeVerseContracts.Services;
 
-namespace RBCAcademy.Controllers
+namespace IDEVerse.Controllers
 {
     [Route("api/Schedule")]
 	public class ScheduleApiController : BaseApiContoller

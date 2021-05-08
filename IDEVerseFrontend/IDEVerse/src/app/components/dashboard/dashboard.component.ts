@@ -1,36 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { DisplayGrid, GridsterConfig, GridsterItem, GridType } from 'angular-gridster2';
-import { ToastrService } from 'ngx-toastr';
-import { EMPTY, Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { Subject } from 'src/app/entities/subject';
-import { Task } from 'src/app/entities/task';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { SubjectService } from 'src/app/services/subject.service';
-import { TasksService } from 'src/app/services/tasks.service';
+import { Component, OnInit } from "@angular/core";
+import { DisplayGrid, GridsterConfig, GridsterItem, GridType } from "angular-gridster2";
+import { ToastrService } from "ngx-toastr";
+import { EMPTY, Observable } from "rxjs";
+import { catchError } from "rxjs/operators";
+import { Subject } from "src/app/entities/subject";
+import { Task } from "src/app/entities/task";
+import { AuthenticationService } from "src/app/services/authentication.service";
+import { SubjectService } from "src/app/services/subject.service";
+import { TasksService } from "src/app/services/tasks.service";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
 })
 export class DashboardComponent implements OnInit {
-
-  isEditPanelVisible = false;
-  public subjects: Observable<Subject[]>;
-  options: GridsterConfig = {
-    gridType: GridType.Fixed,
-    displayGrid: DisplayGrid.None,
-    defaultItemCols: 20,
-    defaultItemRows: 20,
-    pushItems: true,
-    draggable: {
-      enabled: true
-    },
-    resizable: {
-      enabled: true
-    }
-  }
-  dashboard: Array<GridsterItem>;
 
   constructor(public subjectService: SubjectService,
     public toastr: ToastrService,
@@ -48,14 +31,31 @@ export class DashboardComponent implements OnInit {
     this.userName = authService.currentUserValue.firstName;
   }
 
+  isEditPanelVisible = false;
+  public subjects: Observable<Subject[]>;
+  options: GridsterConfig = {
+    gridType: GridType.Fixed,
+    displayGrid: DisplayGrid.None,
+    defaultItemCols: 20,
+    defaultItemRows: 20,
+    pushItems: true,
+    draggable: {
+      enabled: true
+    },
+    resizable: {
+      enabled: true
+    }
+  };
+  dashboard: Array<GridsterItem>;
+  public userName = "";
+
   static itemChange(item, itemComponent) {
-    console.info('itemChanged', item, itemComponent);
+    console.info("itemChanged", item, itemComponent);
   }
 
   static itemResize(item, itemComponent) {
-    console.info('itemResized', item, itemComponent);
+    console.info("itemResized", item, itemComponent);
   }
-  public userName = "";
   ngOnInit() {
   }
 

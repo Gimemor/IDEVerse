@@ -5,12 +5,12 @@
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
     <IsPackable>false</IsPackable>
-    <SpaRoot>..\RBCFrontend</SpaRoot>
+    <SpaRoot>..\IDEVerseFrontend</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
-    <RootNamespace>RBCAcademy</RootNamespace>
+    <RootNamespace>IDEVerse</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="..\RBCFrontend%2a%2a" />
+    <None Remove="..\IDEVerseFrontend%2a%2a" />
   </ItemGroup>
 
   <ItemGroup>

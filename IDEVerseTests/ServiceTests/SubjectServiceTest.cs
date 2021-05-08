@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RBCAcademyCore.Services;
-using RBCAcademyDb;
+using IDEVerseCore.Services;
+using IDEVerseDb;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RbcAcademyTests.ServiceTests
+namespace IDEVerseTests.ServiceTests
 {
 	[TestClass]
 	public class SubjectServiceTest

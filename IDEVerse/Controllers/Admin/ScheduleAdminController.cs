@@ -6,7 +6,7 @@ using IdeVerseContracts.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RBCAcademy.Controllers.Admin
+namespace IDEVerse.Controllers.Admin
 {
     [Route("api/admin/schedule")]
     [ApiController]

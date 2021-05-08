@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-namespace RBCAcademy.Controllers
+namespace IDEVerse.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

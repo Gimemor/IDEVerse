@@ -1,8 +1,8 @@
 ﻿
-using RBCAcademyContracts.Services;
-using RBCAcademyCore.Services;
+using IDEVerseContracts.Services;
+using IDEVerseCore.Services;
 
-namespace RbcAcademyTests.ControllerTests
+namespace IDEVerseTests.ControllerTests
 {
 	/// <summary>
 	///  Контроллер должен правильно передать объект в сервис

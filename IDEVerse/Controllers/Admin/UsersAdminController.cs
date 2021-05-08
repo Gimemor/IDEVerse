@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using IdeVerseContracts.Dto;
 using IdeVerseContracts.Services;
 using Microsoft.AspNetCore.Mvc;
-using RBCAcademyDb;
+using IDEVerseDb;
 
-namespace RBCAcademy.Controllers.Admin
+namespace IDEVerse.Controllers.Admin
 {
     [Route("api/admin/Users")]
     [ApiController]

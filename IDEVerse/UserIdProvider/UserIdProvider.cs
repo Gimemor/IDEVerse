@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IdeVerseContracts.UserManager;
 
-namespace RBCAcademy
+namespace IDEVerse
 {
 	public class UserIdProvider : IUserIdProvider
 	{

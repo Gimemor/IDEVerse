@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RBCAcademyDb;
+using IDEVerseDb;
 
-namespace RbcAcademyTests
+namespace IDEVerseTests
 {
 	public class TestDbFactory
 	{

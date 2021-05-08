@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace RBCAcademy.Migrations
+namespace IDEVerse.Migrations
 {
     public partial class Added_Attendace : Migration
     {

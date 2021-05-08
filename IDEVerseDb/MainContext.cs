@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace RBCAcademyDb
+namespace IDEVerseDb
 {
 	public class MainContext : DbContext
 	{

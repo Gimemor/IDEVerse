@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 
-namespace RBCAcademyDb
+namespace IDEVerseDb
 {
 	public class RightToRole
 	{

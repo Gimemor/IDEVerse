@@ -9,6 +9,7 @@ import { DashboardComponent } from "src/app/components/dashboard/dashboard.compo
 import { TasksComponent } from "src/app/components/tasks/tasks.component";
 import { ScheduleComponent } from "src/app/components/schedule/schedule.component";
 import { LoginComponent } from "../components/login/login.component";
+import {VerseEditorComponent} from "../components/verse-editor/verse-editor.component";
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     path: "dashboard",
     component: DashboardComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: "verse-editor",
+    component: VerseEditorComponent,
+    canActivate: [AuthGuard]
   },
   { path: "tasks", component: TasksComponent, canActivate: [AuthGuard] },
   { path: "schedule", component: ScheduleComponent, canActivate: [AuthGuard] },
