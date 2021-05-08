@@ -49,3 +49,7 @@ gridster {
   padding: 1.5rem;
   border-radius: 1rem;
 }
+
+.ck-editor__editable_inline {
+  min-height: 500px;
+}
