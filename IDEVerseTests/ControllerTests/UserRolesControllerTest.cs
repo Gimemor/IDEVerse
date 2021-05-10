@@ -1,6 +1,4 @@
 ﻿
-using IDEVerseContracts.Services;
-using IDEVerseCore.Services;
 
 namespace IDEVerseTests.ControllerTests
 {

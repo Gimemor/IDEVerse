@@ -23,6 +23,7 @@ namespace IDEVerseCore
 			builder.RegisterType<SubjectTaskService>().As<ISubjectTaskService>();
 			builder.RegisterType<ScheduleService>().As<IScheduleService>();
 			builder.RegisterType<UserRightService>().As<IUserRightService>();
+			builder.RegisterType<VerseTheftService>().As<IVerseTheftService>();
 		}
 	}
 }
