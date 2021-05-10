@@ -16,7 +16,6 @@ import { LoginComponent } from "./components/login/login.component";
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { TeacherControlPanelModule } from "./teacher-control-panel/teacher-control-panel.module";
-import {CKEditorModule} from "@ckeditor/ckeditor5-angular/ckeditor.module";
 import {VerseEditorModule} from "./components/verse-editor/verse-editor.module";
 
 @NgModule({

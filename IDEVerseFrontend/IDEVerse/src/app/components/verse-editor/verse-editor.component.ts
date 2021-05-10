@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import * as BalloonEditor from "@ckeditor/ckeditor5-build-balloon";
 
 @Component({
   selector: "app-verse-editor-component",
@@ -8,7 +7,6 @@ import * as BalloonEditor from "@ckeditor/ckeditor5-build-balloon";
 })
 
 export class VerseEditorComponent implements OnInit {
-  public Editor = BalloonEditor;
 
   constructor() {
   }
