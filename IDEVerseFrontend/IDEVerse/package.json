@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "9.1.3",
     "@angular/platform-server": "9.1.3",
     "@angular/router": "9.1.3",
+    "@gimemor/angular-editor-exp": "^1.1.8",
     "@nguniversal/module-map-ngfactory-loader": "8.1.1",
     "angular-gridster2": "^11.1.4",
     "aspnet-prerendering": "^3.0.1",
