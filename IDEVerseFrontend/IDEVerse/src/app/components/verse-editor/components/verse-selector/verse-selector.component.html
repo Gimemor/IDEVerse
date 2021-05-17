@@ -1,0 +1,5 @@
+<div class="col-md-2" style="max-height: 500px; min-width: 300px; overflow-y: auto">
+  <div *ngFor="let item of dataSource | async">
+    <button (click)="handleSelect(item)">{{item}}</button>
+  </div>
+</div>

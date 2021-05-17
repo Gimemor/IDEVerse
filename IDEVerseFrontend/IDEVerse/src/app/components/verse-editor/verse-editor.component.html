@@ -1,2 +1,5 @@
+<div class="d-flex flex-row">
 <angular-editor (onHotkey)="handleHotkey($event)" [config]="editorConfig">
 </angular-editor>
+<app-verse-selector [dataSource]="rhymes" (wordSelected)="handleWordSelected($event)"></app-verse-selector>
+</div>

@@ -1,7 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {AngularEditorConfig, AngularEditorService} from "@gimemor/angular-editor-exp";
 import {VerseTheftService} from "../../services/verse-theft.service";
-import {take} from "rxjs/operators";
+import {map, take} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Component({
   selector: "app-verse-editor-component",
@@ -10,6 +11,7 @@ import {take} from "rxjs/operators";
 })
 
 export class VerseEditorComponent implements OnInit {
+  public rhymes: Observable<string[]>;
   editorConfig: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -67,13 +69,18 @@ export class VerseEditorComponent implements OnInit {
       let selection = this.editorService.actualizeCurrentSelection();
       selection = selection.split(" ").pop();
       selection = /[а-яА-ЯЁёA-Za-z0-9_]+/.exec(selection)[0];
-      this.verseTheftService.getRhymes(selection)
-        .pipe(take(1))
-        .subscribe(rhymes => {
-          console.log(rhymes);
-        });
+      this.rhymes = this.verseTheftService.getRhymes(selection)
+        .pipe(
+          take(1),
+          map(rhymes => {
+            return rhymes.splice(0, 100);
+          })
+        );
     }
-
     return false; // Prevent bubbling
+  }
+
+  handleWordSelected(word: string) {
+    this.editorService.insertHtml(this.editorService.actualizeCurrentSelection() + "<br />" + word);
   }
 }
