@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>fafc0d73-e4bc-4f1c-9934-12bc38b517fe</UserSecretsId>
     <RootNamespace>IDEVerseDb</RootNamespace>
   </PropertyGroup>

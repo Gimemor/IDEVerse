@@ -62,8 +62,8 @@ namespace IDEVerse
 				auth
 				.AddPolicy(
 					ConfigurationManager.DefaultAuthPolicy,
-					new AuthorizationPolicyBuilder()
-						.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
+					new AuthorizationPolicyBuilder("Basic")
+						.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
 						.RequireAuthenticatedUser()
 						.Build()
 				);
